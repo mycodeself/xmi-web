@@ -11,18 +11,10 @@ class HomeView extends React.Component {
     this.state = {}
   }
 
-  onClick() {
-    rootRef.child('resources/info').push({
-      title: 'Primeros signos del maltrato',
-      url: 'http://www.violenciagenero.msssi.gob.es/informacionUtil/comoDetectarla/primerosSignos/home.htm',
-      time: Date.now(),
-    });
-  }
-
   render() {
     return (
       <Layout title="Home">
-        <Button onClick={() => this.onClick()}>Do action!</Button>
+
       </Layout>
     )
   }

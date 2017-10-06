@@ -5,9 +5,8 @@ import {
 } from 'react-router-dom'
 
 import HomeView from "./views/HomeView";
-import NewsCreateView from "./views/NewsCreateView";
 import AssociationCreateView from "./views/AssociationCreateView";
-import TestimonyCreateView from "./views/TestimonyCreateView";
+import ResourcesView from './views/ResourcesView'
 
 class App extends Component {
   render() {
@@ -16,8 +15,7 @@ class App extends Component {
         <div>
           <Route exact path="/" component={HomeView} />
           <Route path="/asociaciones" component={AssociationCreateView} />
-          <Route path="/testimonios" component={TestimonyCreateView} />
-          <Route path="/alas-vivas/noticias" component={NewsCreateView} />
+          <Route path="/recursos" component={ResourcesView} />
         </div>
       </Router>
       )

@@ -1,12 +1,11 @@
 import React from 'react'
 import { FormGroup, Form, Label, Input, Button } from 'reactstrap'
-
 import { pushAssociation } from "../firebase/firebase"
 
 class AssociationForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.initialState = {
       name: '',
       phone: '',
       email: '',
@@ -14,22 +13,33 @@ class AssociationForm extends React.Component {
       city: '',
       web: '',
       latitude: 0,
-      longitude: 0
-    }
+      longitude: 0,
+      isLoading: false,
+    };
+  }
+
+  componentWillMount() {
+    this.setState(this.initialState);
   }
 
   handleForm() {
-    if(this.state.name
-    && this.state.phone
-    && this.state.email
-    && this.state.address
-    && this.state.city
-    && this.state.web) {
-      pushAssociation(this.state);
-    }
+    this.setState({isLoading: true});
+    pushAssociation(this.state, (snap) => {
+      this.setState(this.initialState);
+    }, (error) => {
+      console.log(error);
+    });
+
   }
 
   render() {
+    if(this.state.isLoading) {
+      return (
+          <div>Loading...</div>
+      )
+    }
+
+
     return (
       <Form>
         <FormGroup>
